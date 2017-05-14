@@ -10,7 +10,7 @@ var gulp = require('gulp'),
 
 //konwetruje plik sass na css i umieszcza w katalogu src/css
 gulp.task('sass', function(){
-    return gulp.src('src/scss/**/*.scss')
+    return gulp.src('src/scss/style.scss')
         .pipe(sass())
         .pipe(concat('main.css'))
         .pipe(gulp.dest('src/css'))

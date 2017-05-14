@@ -1,9 +1,56 @@
-h2{
-  font-size: 50px;
+@font-face {
+    font-family: "BebasNeue";
+    src: url(../fonts/BebasNeueRegular.otf);
+    src: url(../fonts/BebasNeueRegular.eot);
+    src: url(../fonts/BebasNeueRegular.ttf);
+    src: url(../fonts/BebasNeueRegular.woff);
 }
-h3{
-  font-size: 15px;
+
+$xsm: "only screen and (min-width: 500px)";
+$sm: "only screen and (min-width: 768px)";
+$md: "only screen and (min-width: 992px)";
+$lg: "only screen and (min-width: 1200px)";
+$vlg: "only screen and (min-width: 1600px)";
+
+$firstColor: #27AE61;
+$secondColor: #444444;
+
+$textFont: 'Lato';
+$headersFont: 'BebasNeue';
+
+@mixin transition($time){
+    transition: all $time;
 }
-p{
-  color: green;
+
+body {
+    font-family: $textFont;
 }
+
+h1, h2, h3 {
+    font-family: $headersFont;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+.alert {
+    background: $secondColor;
+    border-radius: 0;
+    color: #fff;
+    border: 0;
+    padding: 5px 15px;
+    margin: 2px 0;
+}
+
+@import "header";
+@import "sidebar";
+@import "footer";
