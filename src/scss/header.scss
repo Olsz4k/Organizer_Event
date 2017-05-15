@@ -3,10 +3,18 @@ header {
     color: #fff;
     margin-bottom: 20px;
     padding: 25px;
+    h1 {
+        text-align: center;
+        padding: 18px 0 10px;
+        border-top: 3px solid #fff;
+        border-bottom: 3px solid #fff;
+    }
 }
 
-img{
-    width: 300px;
+.logo {
+    max-width: 200px;
+    padding: 10px 0;
+    margin-top: 20px;
 }
 .caption{
     margin-left: 100px;
@@ -14,11 +22,6 @@ img{
     font-weight: bold;
     margin-top: 40px;
     margin-bottom: 40px;
-}
-
-hr{
-    width: 415px;
-    margin-left: 100px;
 }
 
 table{
