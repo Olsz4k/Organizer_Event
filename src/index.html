@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <link href="./favicon.ico" rel="Shortcut icon">
 </head>
-<body>
+<body ng-app>
 
 <header>
     <div class="container">
@@ -33,7 +34,7 @@
             <div class="col-md-8 main">
 
                 <div class="alert alert-event it-cat">
-                    <h2>wydarzenie</h2>
+                    <h2>{{ "anguar test" }}</h2>
                     <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i><h3>25.05.2017</h3></div>
                     <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i><h3>18:30</h3></div>
                 </div>
@@ -73,5 +74,7 @@
         </div>
     </div>
 </footer>
+
+<script src="./js/app.js"></script>
 
 </body>
