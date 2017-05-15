@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <link href="./favicon.ico" rel="Shortcut icon">
 </head>
-<body ng-app>
+<body ng-app="app">
 
 <header>
     <div class="container">
@@ -31,30 +31,44 @@
 <main>
     <div class="container">
         <div class="row">
-            <div class="col-md-8 main">
+            <div class="col-md-8 main" ng-controller='tabsCtrl'>
 
-                <div class="alert alert-event it-cat">
-                    <h2>{{ "anguar test" }}</h2>
-                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i><h3>25.05.2017</h3></div>
-                    <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i><h3>18:30</h3></div>
-                </div>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading it-cat" role="tab" id="headingOne">
+                            <h2 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    wydarzenie 1
+                                </a>
+                            </h2>
+                            <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> <h3>16.05.2017</h3></div>
+                            <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i> <h3>18:30</h3></div>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel">
+                            <div class="panel-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="alert alert-event economy-cat">
-                    <h2>wydarzenie</h2>
-                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i><h3>25.05.2017</h3></div>
-                    <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i><h3>18:30</h3></div>
-                </div>
 
-                <div class="alert alert-event charity-cat">
-                    <h2>wydarzenie</h2>
-                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i><h3>25.05.2017</h3></div>
-                    <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i><h3>18:30</h3></div>
-                </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading charity-cat" role="tab" id="headingTwo">
+                            <h2 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                    wydarzenie 2
+                                </a>
+                            </h2>
+                            <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> <h3>16.05.2017</h3></div>
+                            <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i> <h3>18:30</h3></div>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel">
+                            <div class="panel-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="alert alert-event sport-cat">
-                    <h2>wydarzenie</h2>
-                    <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i><h3>25.05.2017</h3></div>
-                    <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i><h3>18:30</h3></div>
                 </div>
 
             </div>
@@ -74,7 +88,8 @@
         </div>
     </div>
 </footer>
-
-<script src="./js/app.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/app.js"></script>
 
 </body>

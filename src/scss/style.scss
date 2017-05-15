@@ -42,76 +42,88 @@ h3 {
     font-size: 18px;
 }
 
-.alert {
-    background: $secondColor;
-    border-radius: 0;
-    color: #fff;
-    border: 0;
-    padding: 5px 15px;
-    margin: 2px 0;
-    border-left: 10px solid darken($secondColor, 10%);
-	display: block;
-	float: left;
-	width: 100%;
-	h2 {
-		padding: 5px 0;
-		float: left;
-	}
-	.date, .hour {
-		float: right;
-		width: 15%;
-		text-align: center;
-		padding: 10px 0;
-		h3 {
-			display: inline-block;
-			margin-left: 10px;
+.panel-group {
+	.panel {
+		border: none;
+		border-radius: 0;
+		.panel-heading {
+			border-radius: 0;
+			background: $secondColor;
+			border-left: 10px solid darken($secondColor, 10%);
+			color: #fff;
+			display: flex;
+			h2.panel-title {
+				flex: 4;
+				font-size: 24px;
+				margin: 0;
+				padding: 18px 5px 10px;
+				a:hover, a:focus {
+					text-decoration: none;
+				}
+			}
+			.date, .hour {
+				flex: 1;
+				display: flex;
+				padding: 20px 0 15px;
+				h3 {
+					margin: 0;
+					padding-left: 15px;
+					font-size: 18px;
+				}
+			}
+		}
+		.panel-body {
+			background: #ECECEC;
+			padding: 30px;
 		}
 	}
 }
 
 //CATEGORY OF EVENTS
+.panel-group .panel {
+	$economy-color: #27AE61;
 
-$economy-color: #27AE61;
+	.economy-cat {
+		background: $economy-color;
+		border-color: darken($economy-color, 10%);
+	}
 
-.economy-cat {
-	background: $economy-color;
-	border-color: darken($economy-color, 10%);
+	$entertainment-color: #F39C11;
+
+	.entertainment-cat {
+		background: $entertainment-color;
+		border-color: darken($entertainment-color, 10%);
+	}
+
+	$sport-color: #fff;
+
+	.sport-cat {
+		background: $entertainment-color;
+		border-color: darken($entertainment-color, 10%);
+	}
+
+	$charity-color: #D14840;
+
+	.charity-cat {
+		background: $charity-color;
+		border-color: darken($charity-color, 10%);
+	}
+
+	$it-color: #297FB8;
+
+	.it-cat {
+		background: $it-color;
+		border-color: darken($it-color, 10%);
+	}
+
+	$autonomy-color: #8F44AD;
+
+	.autonomy-cat {
+		background: $autonomy-color;
+		border-color: darken($autonomy-color, 10%);
+	}
 }
 
-$entertainment-color: #F39C11;
-
-.entertainment-cat {
-	background: $entertainment-color;
-	border-color: darken($entertainment-color, 10%);
-}
-
-$sport-color: #fff;
-
-.sport-cat {
-	background: $entertainment-color;
-	border-color: darken($entertainment-color, 10%);
-}
-
-$charity-color: #D14840;
-
-.charity-cat {
-	background: $charity-color;
-	border-color: darken($charity-color, 10%);
-}
-
-$it-color: #297FB8;
-
-.it-cat {
-	background: $it-color;
-	border-color: darken($it-color, 10%);
-}
-
-$autonomy-color: #8F44AD;
-
-.autonomy-cat {
-	background: $autonomy-color;
-	border-color: darken($autonomy-color, 10%);
-}
 
 @import "header";
 @import "sidebar";

@@ -1,27 +1,33 @@
 header {
     background: $firstColor;
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     padding: 25px;
 	border-bottom: 5px solid darken($firstColor, 10%);
     .date, .hour {
 	    width: 100%;
-	    float: right;
+	    max-width: 200px;
+	    display: flex;
 	    background: #f4f4f4;
-	    margin: 5px 0;
+	    margin: 3px 0;
+	    float: right;
 	    h3, i {
 	        display: inline-block;
 	        color: #222;
 		    text-align: center;
         }
 	    h3 {
-		    width: 75%;
+		    margin: 0;
+		    padding: 18px 0 15px;
+		    border-left: 4px solid $firstColor;
+		    flex: 3;
 	    }
 	    i {
-		    width: 20%;
+		    flex: 1;
 		    min-width: 60px;
 		    text-align: center;
 		    font-size: 18px;
+		    padding: 17px 0;
 	    }
     }
 }
@@ -36,17 +42,7 @@ header {
     padding: 18px 0 10px;
     border-top: 3px solid #fff;
     border-bottom: 3px solid #fff;
-    font-size: 50px;
-    margin: 20px 40px;
-}
-
-table {
-    border-collapse: collapse;
-}
-table, td {
-    border: 1px solid white;
-}
-
-td {
-    padding: 10px;
+    font-size: 42px;
+    margin: 25px auto 20px;
+	max-width: 342px;
 }
