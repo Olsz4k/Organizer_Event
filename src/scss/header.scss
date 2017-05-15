@@ -14,23 +14,24 @@ header {
 .logo {
     max-width: 200px;
     padding: 10px 0;
-    margin-top: 20px;
-}
-.caption{
-    margin-left: 100px;
-    font-size: 50px;
-    font-weight: bold;
-    margin-top: 40px;
-    margin-bottom: 40px;
 }
 
-table{
+.caption {
+    text-align: center;
+    padding: 18px 0 10px;
+    border-top: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    font-size: 50px;
+    margin: 20px 40px;
+}
+
+table {
     border-collapse: collapse;
 }
 table, td {
     border: 1px solid white;
 }
 
-td{
+td {
     padding: 10px;
 }
