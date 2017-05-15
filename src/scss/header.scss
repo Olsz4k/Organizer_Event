@@ -3,11 +3,26 @@ header {
     color: #fff;
     margin-bottom: 20px;
     padding: 25px;
-    h1 {
-        text-align: center;
-        padding: 18px 0 10px;
-        border-top: 3px solid #fff;
-        border-bottom: 3px solid #fff;
+	border-bottom: 5px solid darken($firstColor, 10%);
+    .date, .hour {
+	    width: 100%;
+	    float: right;
+	    background: #f4f4f4;
+	    margin: 5px 0;
+	    h3, i {
+	        display: inline-block;
+	        color: #222;
+		    text-align: center;
+        }
+	    h3 {
+		    width: 75%;
+	    }
+	    i {
+		    width: 20%;
+		    min-width: 60px;
+		    text-align: center;
+		    font-size: 18px;
+	    }
     }
 }
 
