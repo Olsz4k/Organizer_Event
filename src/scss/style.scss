@@ -18,10 +18,9 @@ $secondColor: #444444;
 $autonomy-color: #8F44AD;
 $charity-color: #D14840;
 $economy-color: #27AE61;
-$entertainment-color: #F39C11;
+$entertainment-color: #FAC51C;
 $it-color: #297FB8;
 $sport-color: #E67E22;
-
 
 $textFont: 'Lato';
 $headersFont: 'BebasNeue';
@@ -110,9 +109,9 @@ h3 {
 		border-color: darken($economy-color, 10%);
 		.category-icon {
 			background-color: darken($economy-color, 10%);
+			color: $economy-color;
 		}
 	}
-
 
 	.fa-entertainment:before {
 		content: "\f001";
@@ -123,6 +122,7 @@ h3 {
 		border-color: darken($entertainment-color, 10%);
 		.category-icon {
 			background-color: darken($entertainment-color, 10%);
+			color: $entertainment-color;
 		}
 	}
 
@@ -135,6 +135,7 @@ h3 {
 		border-color: darken($sport-color, 10%);
 		.category-icon {
 			background-color: darken($sport-color, 10%);
+			color: $sport-color;
 		}
 	}
 
@@ -147,6 +148,7 @@ h3 {
 		border-color: darken($charity-color, 10%);
 		.category-icon {
 			background-color: darken($charity-color, 10%);
+			color: $charity-color;
 		}
 	}
 
@@ -159,6 +161,7 @@ h3 {
 		border-color: darken($it-color, 10%);
 		.category-icon {
 			background-color: darken($it-color, 10%);
+			color: $it-color;
 		}
 	}
 
@@ -171,6 +174,7 @@ h3 {
 		border-color: darken($autonomy-color, 10%);
 		.category-icon {
 			background-color: darken($autonomy-color, 10%);
+			color: $autonomy-color;
 		}
 	}
 }

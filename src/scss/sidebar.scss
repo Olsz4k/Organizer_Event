@@ -19,6 +19,7 @@
 		padding: 0 20px;
 		margin: 20px 0;
 		.btn {
+			@include transition(.2s);
 			flex: 1;
 			background: $secondColor;
 			font-family: $headersFont;
@@ -28,7 +29,10 @@
 			border-radius: 0;
 			border: 0;
 			box-shadow: none;
-			&:hover, &.active {
+			&:hover {
+				background: darken($firstColor, 10%);
+			}
+			&.active {
 				background: $firstColor;
 			}
 			&:focus {
@@ -39,6 +43,7 @@
 	.choice-category {
 		text-align: center;
 		.badge {
+			@include transition(.2s);
 			cursor: pointer;
 			border-radius: 0;
 			background: $secondColor;
