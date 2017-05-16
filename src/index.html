@@ -20,9 +20,9 @@
             <div class="col-md-6">
                 <h1 class="caption">Organizer wydarzeń UEK</h1>
             </div>
-            <div class="col-md-3">
-                <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> <h3>20 listopada 2017</h3></div>
-                <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i> <h3>18:30:24</h3></div>
+            <div class="col-md-3" ng-controller="dateCtrl">
+                <div class="date"><i class="fa fa-calendar" aria-hidden="true" ></i> <h3>{{ data | date : "dd.MM.y" }}</h3></div>
+                <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i> <h3> {{ time | date : "hh:mm:ss" }}</h3></div>
             </div>
         </div>
     </div>
