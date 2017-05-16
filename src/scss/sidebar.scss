@@ -1,6 +1,7 @@
 .sidebar {
     background: #ececec;
     min-height: 200px;
+	padding-bottom: 40px;
     h2 {
         text-align: center;
         background: $secondColor;
@@ -8,4 +9,59 @@
         margin: 0 -15px;
         padding: 15px 0 10px;
     }
+	h3 {
+		margin-top: 40px;
+		text-align: center;
+	}
+	.btn-group {
+		display: flex;
+		width: 100%;
+		padding: 0 20px;
+		margin: 20px 0;
+		.btn {
+			flex: 1;
+			background: $secondColor;
+			font-family: $headersFont;
+			font-size: 18px;
+			padding-top: 8px;
+			padding-bottom: 4px;
+			border-radius: 0;
+			border: 0;
+			box-shadow: none;
+			&:hover, &.active {
+				background: $firstColor;
+			}
+			&:focus {
+				outline: 0;
+			}
+		}
+	}
+	.choice-category {
+		text-align: center;
+		.badge {
+			cursor: pointer;
+			border-radius: 0;
+			background: $secondColor;
+			padding: 5px 8px;
+			margin: 3px;
+			&.autonomy-cat.active, &.autonomy-cat:hover {
+				background: $autonomy-color;
+			}
+			&.charity-cat.active, &.charity-cat:hover {
+				background: $charity-color;
+			}
+			&.economy-cat.active, &.economy-cat:hover {
+				background: $economy-color;
+			}
+			&.entertainment-cat.active, &.entertainment-cat:hover {
+				background: $entertainment-color;
+			}
+			&.it-cat.active, &.it-cat:hover {
+				background: $it-color;
+			}
+			&.sport-cat.active, &.sport-cat:hover {
+				background: $sport-color;
+			}
+		}
+	}
 }

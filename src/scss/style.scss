@@ -15,6 +15,14 @@ $vlg: "only screen and (min-width: 1600px)";
 $firstColor: #27AE61;
 $secondColor: #444444;
 
+$autonomy-color: #8F44AD;
+$charity-color: #D14840;
+$economy-color: #27AE61;
+$entertainment-color: #F39C11;
+$it-color: #297FB8;
+$sport-color: #E67E22;
+
+
 $textFont: 'Lato';
 $headersFont: 'BebasNeue';
 
@@ -93,8 +101,6 @@ h3 {
 //CATEGORY OF EVENTS
 .panel-group .panel {
 
-	$economy-color: #27AE61;
-
 	.fa-economy:before {
 		content: "\f201";
 	}
@@ -107,7 +113,6 @@ h3 {
 		}
 	}
 
-	$entertainment-color: #F39C11;
 
 	.fa-entertainment:before {
 		content: "\f001";
@@ -121,8 +126,6 @@ h3 {
 		}
 	}
 
-	$sport-color: #E67E22;
-
 	.fa-sport:before {
 		content: "\f1e3";
 	}
@@ -134,8 +137,6 @@ h3 {
 			background-color: darken($sport-color, 10%);
 		}
 	}
-
-	$charity-color: #D14840;
 
 	.fa-charity:before {
 		content: "\f004";
@@ -149,8 +150,6 @@ h3 {
 		}
 	}
 
-	$it-color: #297FB8;
-
 	.fa-it:before {
 		content: "\f121";
 	}
@@ -162,8 +161,6 @@ h3 {
 			background-color: darken($it-color, 10%);
 		}
 	}
-
-	$autonomy-color: #8F44AD;
 
 	.fa-autonomy:before {
 		content: "\f19c";
