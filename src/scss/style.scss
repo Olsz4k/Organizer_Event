@@ -92,15 +92,26 @@ h3 {
 
 //CATEGORY OF EVENTS
 .panel-group .panel {
+
 	$economy-color: #27AE61;
+
+	.fa-economy:before {
+		content: "\f201";
+	}
 
 	.economy-cat {
 		background: $economy-color;
 		border-color: darken($economy-color, 10%);
-
+		.category-icon {
+			background-color: darken($economy-color, 10%);
+		}
 	}
 
 	$entertainment-color: #F39C11;
+
+	.fa-entertainment:before {
+		content: "\f001";
+	}
 
 	.entertainment-cat {
 		background: $entertainment-color;
@@ -112,6 +123,10 @@ h3 {
 
 	$sport-color: #E67E22;
 
+	.fa-sport:before {
+		content: "\f1e3";
+	}
+
 	.sport-cat {
 		background: $sport-color;
 		border-color: darken($sport-color, 10%);
@@ -121,6 +136,10 @@ h3 {
 	}
 
 	$charity-color: #D14840;
+
+	.fa-charity:before {
+		content: "\f08a";
+	}
 
 	.charity-cat {
 		background: $charity-color;
@@ -132,6 +151,10 @@ h3 {
 
 	$it-color: #297FB8;
 
+	.fa-it:before {
+		content: "\f121";
+	}
+
 	.it-cat {
 		background: $it-color;
 		border-color: darken($it-color, 10%);
@@ -141,6 +164,10 @@ h3 {
 	}
 
 	$autonomy-color: #8F44AD;
+
+	.fa-autonomy:before {
+		content: "\f19c";
+	}
 
 	.autonomy-cat {
 		background: $autonomy-color;

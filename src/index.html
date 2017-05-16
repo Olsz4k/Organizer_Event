@@ -22,7 +22,7 @@
             </div>
             <div class="col-md-3" ng-controller="dateCtrl">
                 <div class="date"><i class="fa fa-calendar" aria-hidden="true" ></i> <h3>{{ data | date : "dd.MM.y" }}</h3></div>
-                <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i> <h3> {{ time | date : "HH:mm:ss" }}</h3></div>
+                <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i> <h3>{{ time | date : "HH:mm:ss" }}</h3></div>
             </div>
         </div>
     </div>
@@ -42,13 +42,13 @@
                                     {{ event.name }}
                                 </a>
                             </h2>
-                            <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> <h3>30.05.2017</h3></div>
-                            <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i> <h3>18:30</h3></div>
-                            <div class="category-icon"><i class="fa fa-{{ event.icon }}" aria-hidden="true"></i></div>
+                            <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i> <h3>{{ event.date | date : "dd.MM.y" }}</h3></div>
+                            <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i> <h3>{{ event.date | date : "HH:mm" }}</h3></div>
+                            <div class="category-icon"><i class="fa fa-{{ event.category }}" aria-hidden="true"></i></div>
                         </div>
                         <div id="event_{{ event.id }}" class="panel-collapse collapse" role="tabpanel">
                             <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                {{ event.content }}
                             </div>
                         </div>
                     </div>
