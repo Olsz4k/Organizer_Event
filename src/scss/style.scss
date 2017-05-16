@@ -24,6 +24,7 @@ $headersFont: 'BebasNeue';
 
 body {
     font-family: $textFont;
+	min-height: 100vh;
 }
 
 h1, h2, h3 {
@@ -71,6 +72,16 @@ h3 {
 					font-size: 18px;
 				}
 			}
+			.category-icon {
+				flex: 1;
+				background: darken($secondColor, 10%);
+				margin: -10px -15px;
+				float: right;
+				text-align: center;
+				line-height: 74px;
+				font-size: 24px;
+				max-width: 80px;
+			}
 		}
 		.panel-body {
 			background: #ECECEC;
@@ -86,6 +97,7 @@ h3 {
 	.economy-cat {
 		background: $economy-color;
 		border-color: darken($economy-color, 10%);
+
 	}
 
 	$entertainment-color: #F39C11;
@@ -93,13 +105,19 @@ h3 {
 	.entertainment-cat {
 		background: $entertainment-color;
 		border-color: darken($entertainment-color, 10%);
+		.category-icon {
+			background-color: darken($entertainment-color, 10%);
+		}
 	}
 
-	$sport-color: #fff;
+	$sport-color: #E67E22;
 
 	.sport-cat {
-		background: $entertainment-color;
-		border-color: darken($entertainment-color, 10%);
+		background: $sport-color;
+		border-color: darken($sport-color, 10%);
+		.category-icon {
+			background-color: darken($sport-color, 10%);
+		}
 	}
 
 	$charity-color: #D14840;
@@ -107,6 +125,9 @@ h3 {
 	.charity-cat {
 		background: $charity-color;
 		border-color: darken($charity-color, 10%);
+		.category-icon {
+			background-color: darken($charity-color, 10%);
+		}
 	}
 
 	$it-color: #297FB8;
@@ -114,6 +135,9 @@ h3 {
 	.it-cat {
 		background: $it-color;
 		border-color: darken($it-color, 10%);
+		.category-icon {
+			background-color: darken($it-color, 10%);
+		}
 	}
 
 	$autonomy-color: #8F44AD;
@@ -121,9 +145,11 @@ h3 {
 	.autonomy-cat {
 		background: $autonomy-color;
 		border-color: darken($autonomy-color, 10%);
+		.category-icon {
+			background-color: darken($autonomy-color, 10%);
+		}
 	}
 }
-
 
 @import "header";
 @import "sidebar";
