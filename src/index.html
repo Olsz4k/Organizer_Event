@@ -31,7 +31,7 @@
     </div>
 </header>
 
-<main>
+<main ng-controller="selectionCtrl">
     <div class="container">
         <div class="row">
             <div class="col-md-8 main" ng-controller='eventsCtrl'>
@@ -60,11 +60,11 @@
                 </div>
 
             </div>
-            <div class="col-md-4 sidebar" >
+            <div class="col-md-4 sidebar">
                 <h2>Sortuj wydarzenia</h2>
 
                 <h3>Przedział czasu</h3>
-                <div class="btn-group" ng-controller="selectionCtrl">
+                <div class="btn-group" >
                     <button id="30days" type="button" class="btn btn-primary active" ng-click="function30days()">30 dni</button>
                     <button id="14days" type="button" class="btn btn-primary" ng-click="function14days()">14 dni</button>
                     <button id="7days" type="button" class="btn btn-primary" ng-click="function7days()">7 dni</button>
