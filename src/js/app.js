@@ -55,8 +55,31 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
             $scope.events = tablica;
         };
 
+
+
+        var delActiveClassFromCat =  function(){
+            $('.badge').removeClass("active");
+        };
+
+        $scope.categoryAll = function () {
+            var categoryEvent = [];
+
+            delActiveClassFromCat();
+            $('.badge.all-cat').addClass('active');
+
+            for (var i = 0; i < result.data.length; i++) {
+                categoryEvent.push(result.data[i]);
+            }
+
+            $scope.events = categoryEvent;
+
+        };
+
         $scope.categoryIT = function () {
             var categoryEvent = [];
+
+            delActiveClassFromCat();
+            $('.badge.it-cat').addClass('active');
 
             for (var i = 0; i < result.data.length; i++) {
                 if (result.data[i].category == "it") {
@@ -71,6 +94,9 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
         $scope.categoryEconomy = function () {
             var categoryEvent = [];
 
+            delActiveClassFromCat();
+            $('.badge.economy-cat').addClass('active');
+
             for (var i = 0; i < result.data.length; i++) {
                 if (result.data[i].category == "economy") {
                     categoryEvent.push(result.data[i]);
@@ -79,8 +105,12 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
             }
             $scope.events = categoryEvent;
         };
+
         $scope.categorySport = function () {
             var categoryEvent = [];
+
+            delActiveClassFromCat();
+            $('.badge.sport-cat').addClass('active');
 
             for (var i = 0; i < result.data.length; i++) {
                 if (result.data[i].category == "sport") {
@@ -90,8 +120,12 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
             }
             $scope.events = categoryEvent;
         };
+
         $scope.categoryCharity = function () {
             var categoryEvent = [];
+
+            delActiveClassFromCat();
+            $('.badge.charity-cat').addClass('active');
 
             for (var i = 0; i < result.data.length; i++) {
                 if (result.data[i].category == "charity") {
@@ -101,8 +135,12 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
             }
             $scope.events = categoryEvent;
         };
+
         $scope.categoryEntertainment = function () {
             var categoryEvent = [];
+
+            delActiveClassFromCat();
+            $('.badge.entertainment-cat').addClass('active');
 
             for (var i = 0; i < result.data.length; i++) {
                 if (result.data[i].category == "entertainment") {
@@ -112,18 +150,27 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
             }
             $scope.events = categoryEvent;
         };
+
         $scope.categoryOrganisation = function () {
             var categoryEvent = [];
 
+            delActiveClassFromCat();
+            $('.badge.autonomy-cat').addClass('active');
+
             for (var i = 0; i < result.data.length; i++) {
-                if (result.data[i].category == "organisation") {
+                if (result.data[i].category == "autonomy") {
                     categoryEvent.push(result.data[i]);
                 }
 
             }
             $scope.events = categoryEvent;
         };
+
+        // Domyślne wywietlenie wszystkich kategorii wydarzeń
+        $scope.categoryAll();
+
     }
+
 
     function errorCallback(error) {
         //error code

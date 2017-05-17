@@ -49,6 +49,9 @@
 			background: $secondColor;
 			padding: 5px 8px;
 			margin: 3px;
+			&.all-cat.active, &.all-cat:hover {
+				background: $firstColor;
+			}
 			&.autonomy-cat.active, &.autonomy-cat:hover {
 				background: $autonomy-color;
 			}
