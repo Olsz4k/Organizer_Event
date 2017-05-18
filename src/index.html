@@ -34,7 +34,7 @@
 <main ng-controller="selectionCtrl">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 main" ng-controller='eventsCtrl'>
+            <div class="col-md-8 main">
 
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
@@ -64,21 +64,21 @@
                 <h2>Sortuj wydarzenia</h2>
 
                 <h3>Przedział czasu</h3>
-                <div class="btn-group" >
-                    <button id="30days" type="button" class="btn btn-primary active" ng-click="function30days()">30 dni</button>
-                    <button id="14days" type="button" class="btn btn-primary" ng-click="function14days()">14 dni</button>
-                    <button id="7days" type="button" class="btn btn-primary" ng-click="function7days()">7 dni</button>
+                <div class="btn-group time-buttons">
+                    <button id="30days" type="button" class="btn btn-primary active" ng-click="setActiveTime(30)">30 dni</button>
+                    <button id="14days" type="button" class="btn btn-primary" ng-click="setActiveTime(14)">14 dni</button>
+                    <button id="7days" type="button" class="btn btn-primary" ng-click="setActiveTime(7)">7 dni</button>
                 </div>
 
                 <h3>Kategorie</h3>
                 <div class="choice-category">
-                    <span class="badge all-cat active" ng-click="categoryAll()">Wszystkie kategorie</span>
-                    <span class="badge it-cat" ng-click="categoryIT()">IT</span>
-                    <span class="badge economy-cat" ng-click="categoryEconomy()">Ekonomia</span>
-                    <span class="badge sport-cat" ng-click="categorySport()">Sportowe</span>
-                    <span class="badge charity-cat" ng-click="categoryCharity()">Charytatywne</span>
-                    <span class="badge autonomy-cat" ng-click="categoryOrganisation()">Samorząd</span>
-                    <span class="badge entertainment-cat" ng-click="categoryEntertainment()">Rozrywka</span>
+                    <span class="badge all-cat active" ng-click="setActiveCategory('all')">Wszystkie kategorie</span>
+                    <span class="badge it-cat" ng-click="setActiveCategory('it')">IT</span>
+                    <span class="badge economy-cat" ng-click="setActiveCategory('economy')">Ekonomia</span>
+                    <span class="badge sport-cat" ng-click="setActiveCategory('sport')">Sportowe</span>
+                    <span class="badge charity-cat" ng-click="setActiveCategory('charity')">Charytatywne</span>
+                    <span class="badge autonomy-cat" ng-click="setActiveCategory('autonomy')">Samorząd</span>
+                    <span class="badge entertainment-cat" ng-click="setActiveCategory('entertainment')">Rozrywka</span>
                 </div>
 
             </div>
@@ -96,7 +96,7 @@
     </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<!--<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="js/app.js"></script>
 

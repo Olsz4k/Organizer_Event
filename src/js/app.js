@@ -1,19 +1,5 @@
 var app = angular.module('app', []);
 
-app.controller('eventsCtrl', ['$scope', '$http', function ($scope, $http) {
-
-    $http.get('./events.json').then(successCallback, errorCallback);
-
-    function successCallback(result) {
-        // $scope.events = result.data;
-    }
-
-    function errorCallback(error) {
-        //error code
-    }
-
-}]);
-
 app.controller('dateCtrl', function ($scope, $interval) {
 
     var tick = function () {
@@ -28,152 +14,65 @@ app.controller('dateCtrl', function ($scope, $interval) {
 app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
 
     $http.get('./events.json').then(successCallback, errorCallback);
+
     function successCallback(result) {
-        // $scope.events = result.data;
-        $scope.function30days = function () {
-            $(".btn-group > .btn").removeClass("active");
-            $("#30days").addClass("active");
 
-            var tablica = [result.data[0], result.data[1], result.data[2], result.data[3]];
+        $scope.events = result.data;
 
-            $scope.events = tablica;
+        $scope.activeCategory = "all";
+        $scope.activeTime = 30; // przedzial czasu w dniach
+
+        // Ustawienie kategorii
+        $scope.setActiveCategory = function( newCategory ) {
+            $(".badge").removeClass('active');
+            $(".badge."+newCategory+"-cat").addClass('active');
+            $scope.activeCategory = newCategory;
+            $scope.sortEvents();
         };
 
-        $scope.function14days = function () {
-            $(".btn-group > .btn").removeClass("active");
-            $("#14days").addClass("active");
-
-            var tablica = [result.data[3], result.data[2]];
-            $scope.events = tablica;
+        // Ustawienie przedziału czasu
+        $scope.setActiveTime = function( newTime ) {
+            $(".time-buttons button").removeClass('active');
+            $(".time-buttons #"+newTime+"days").addClass('active');
+            $scope.activeTime = newTime;
+            $scope.sortEvents();
         };
 
-        $scope.function7days = function () {
-            $(".btn-group > .btn").removeClass("active");
-            $("#7days").addClass("active");
+        // Sortowanie wydarzeń
+        $scope.sortEvents = function() {
 
-            var tablica = [result.data[4], result.data[5], result.data[6]];
-            $scope.events = tablica;
-        };
+            var dateSort = [];
+            var catSort = [];
 
-
-
-        var delActiveClassFromCat =  function(){
-            $('.badge').removeClass("active");
-        };
-
-        $scope.categoryAll = function () {
-            var categoryEvent = [];
-
-            delActiveClassFromCat();
-            $('.badge.all-cat').addClass('active');
-
+            // Sortowanie po dacie
             for (var i = 0; i < result.data.length; i++) {
-                categoryEvent.push(result.data[i]);
-            }
 
-            $scope.events = categoryEvent;
+                var thisDate = new Date( result.data[i].date ); // data wydarzenia
+                var today = new Date(); // dzisiejsza data
+                var time = thisDate - today; // różnica czasu w milisekundach
 
-        };
-
-        $scope.categoryIT = function () {
-            var categoryEvent = [];
-
-            delActiveClassFromCat();
-            $('.badge.it-cat').addClass('active');
-
-            for (var i = 0; i < result.data.length; i++) {
-                if (result.data[i].category == "it") {
-                    categoryEvent.push(result.data[i]);
+                // 1000*60*60*24ms = 1 dzien
+                if ( time < 1000*60*60*24*$scope.activeTime) {
+                    dateSort.push(result.data[i]);
                 }
 
             }
-            $scope.events = categoryEvent;
 
-        };
+            // Sortowanie po kategorii
+            for (var j = 0; j < dateSort.length; j++) {
 
-        $scope.categoryEconomy = function () {
-            var categoryEvent = [];
-
-            delActiveClassFromCat();
-            $('.badge.economy-cat').addClass('active');
-
-            for (var i = 0; i < result.data.length; i++) {
-                if (result.data[i].category == "economy") {
-                    categoryEvent.push(result.data[i]);
+                if ( dateSort[j].category === $scope.activeCategory || $scope.activeCategory === "all") {
+                    catSort.push(dateSort[j]);
                 }
 
             }
-            $scope.events = categoryEvent;
-        };
-
-        $scope.categorySport = function () {
-            var categoryEvent = [];
-
-            delActiveClassFromCat();
-            $('.badge.sport-cat').addClass('active');
-
-            for (var i = 0; i < result.data.length; i++) {
-                if (result.data[i].category == "sport") {
-                    categoryEvent.push(result.data[i]);
-                }
-
-            }
-            $scope.events = categoryEvent;
-        };
-
-        $scope.categoryCharity = function () {
-            var categoryEvent = [];
-
-            delActiveClassFromCat();
-            $('.badge.charity-cat').addClass('active');
-
-            for (var i = 0; i < result.data.length; i++) {
-                if (result.data[i].category == "charity") {
-                    categoryEvent.push(result.data[i]);
-                }
-
-            }
-            $scope.events = categoryEvent;
-        };
-
-        $scope.categoryEntertainment = function () {
-            var categoryEvent = [];
-
-            delActiveClassFromCat();
-            $('.badge.entertainment-cat').addClass('active');
-
-            for (var i = 0; i < result.data.length; i++) {
-                if (result.data[i].category == "entertainment") {
-                    categoryEvent.push(result.data[i]);
-                }
-
-            }
-            $scope.events = categoryEvent;
-        };
-
-        $scope.categoryOrganisation = function () {
-            var categoryEvent = [];
-
-            delActiveClassFromCat();
-            $('.badge.autonomy-cat').addClass('active');
-
-            for (var i = 0; i < result.data.length; i++) {
-                if (result.data[i].category == "autonomy") {
-                    categoryEvent.push(result.data[i]);
-                }
-
-            }
-            $scope.events = categoryEvent;
-        };
-
-        // Domyślne wywietlenie wszystkich kategorii wydarzeń
-        $scope.categoryAll();
+            $scope.events = catSort;
+        }
 
     }
 
-
     function errorCallback(error) {
-        //error code
+        console.log("Nie udalo sie pobrac pliku JSON!");
     }
 
 }]);
