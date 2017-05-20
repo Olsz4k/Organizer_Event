@@ -179,6 +179,32 @@ h3 {
 	}
 }
 
+.event-form {
+	input, textarea, select {
+		border: 0;
+		border-radius: 0;
+		border-bottom: #ccc 2px solid;
+		box-shadow: none;
+		margin: 30px 0;
+		&:active, &:focus {
+			outline: none;
+			box-shadow: none;
+			border-bottom-color: $firstColor ;
+		}
+	}
+	.btn {
+		border: 0;
+		font-size: 18px;
+		font-family: $headersFont;
+		background: $firstColor;
+		padding: 10px 15px;
+	}
+}
+
+.alert-danger, .alert-succes {
+	border-radius: 0;
+}
+
 @import "header";
 @import "sidebar";
 @import "footer";
