@@ -76,3 +76,19 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
     }
 
 }]);
+
+app.controller('validateCtrl', function ($scope) {
+
+
+    $scope.submitForm = function (isValid) {
+        if (isValid) {
+            alert("Gratulacje, wydarzenie zostało poprawnie dodane");
+        }
+
+        else {
+            alert ("Niestety wprowadzone dane nie są odpowiednie");
+        }
+
+    }
+
+});
