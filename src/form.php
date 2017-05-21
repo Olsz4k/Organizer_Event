@@ -2,28 +2,16 @@
     $message = '';
     $error = '';
     if(isset($_POST["submit"])) {
-        if (empty($_POST["name"])) {
-            $error = "<div class='alert alert-danger'>Podaj nazwę wydarzania</div>";
-        }
-        else if(empty($_POST["date"])) {
-            $error = "<div class='alert alert-danger'>Podaj datę wydarzenia</div>";
-        }
-        else if(empty($_POST["content"])) {
-            $error = "<div class='alert alert-danger'>Podaj treść</div>";
-        }
-        else if(empty($_POST["category"])) {
-            $error = "<div class='alert alert-danger'>Wybierz kategorię</div>";
-        }
-        else {
+
             if (file_exists('events.json')) {
                 $current_data = file_get_contents('events.json');
                 $array_data = json_decode($current_data, true);
 
                 $extra = array(
                     'id'            =>     count($array_data) + 1,
-                    'name'          =>     $_POST["name"],
+                    'name'          =>     $_POST["nameEvent"],
                     'date'          =>     $_POST["date"],
-                    'content'       =>     $_POST['content'],
+                    'content'       =>     $_POST['contentEvent'],
                     'category'      =>     $_POST["category"]
                 );
 
@@ -35,7 +23,7 @@
             } else {
                 $error = 'JSON File not exits';
             }
-        }
+
     }
 ?>
 
@@ -81,21 +69,30 @@
             <div class="col-md-6 col-md-offset-3">
                 <h2>Dodaj nowe wydarzenie</h2>
 
-                <form method="post" action="form.php">
+                <form ng-cloak ng-controller="validateCtrl" name="addEventForm"
 
-                    <?php
-                        if(isset($error)) {
-                            echo $error;
-                        }
-                    ?>
+                      novalidate action="form.php" method="post">
 
-                    <input title="name" type="text" name="name" class="form-control" placeholder="Nazwa wydarzenia" />
+                    <div ng-class="{ 'has-error' : addEventForm.nameEvent.$invalid && !addEventForm.nameEvent.$pristine }">
+                        <input title="name" type="text" name="nameEvent" ng-model="nameEvent" class="form-control"
+                               placeholder="Nazwa wydarzenia" ng-minlength="3" required/>
+                        <p ng-show="addEventForm.nameEvent.$invalid && !addEventForm.nameEvent.$pristine"
+                           class="help-block">Wprowadzona nazwa jest niepoprawna</p>
+                    </div>
 
-                    <input title="date" type="datetime-local" name="date" class="form-control" placeholder="Data" />
+                    <input title="date" type="datetime-local" name="date" class="form-control"
+                           placeholder="yyyy-MM-ddTHH:mm" min="{{ minDatetimeLocal | date : 'yyyy-MM-ddTHH:mm' }}"
+                           required/>
 
-                    <textarea title="content" name="content" class="form-control" placeholder="Treść"></textarea>
+                    <div ng-class="{ 'has-error' : addEventForm.contentEvent.$invalid && !addEventForm.nameEvent.$pristine }">
+                        <textarea title="content" name="contentEvent" ng-model="contentEvent" class="form-control"
+                                  placeholder="Treść" ng-minlength="35" required></textarea>
+                        <p ng-show="addEventForm.contentEvent.$invalid && !addEventForm.contentEvent.$pristine"
+                           class="help-block">Wprowadzony opis jest zbyt krótki</p>
+                    </div>
 
-                    <select title="Kategoria" name="category" class="form-control" >
+
+                    <select title="Kategoria" name="category" class="form-control" required>
                         <option value="it">IT</option>
                         <option value="economy">Ekonomia</option>
                         <option value="sport">Sport</option>
@@ -104,11 +101,7 @@
                         <option value="entertainment">Rozrywka</option>
                     </select>
 
-                    <input type="submit" name="submit" value="Dodaj nowe wydarzenie" class="btn btn-primary" />
-
-                    <?php if(isset($message)) {
-                        echo $message;
-                    } ?>
+                    <input type="submit" name="submit" value="Dodaj nowe wydarzenie" class="btn btn-primary"/>
 
                 </form>
             </div>
