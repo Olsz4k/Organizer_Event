@@ -39,15 +39,24 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 32px;
+    font-size: 24px;
+	@media #{$md} {
+		font-size: 32px;
+	}
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 18px;
+	@media #{$md} {
+		font-size: 24px;
+	}
 }
 
 h3 {
-    font-size: 18px;
+    font-size: 16px;
+	@media #{$md} {
+		font-size: 18px;
+	}
 }
 
 .panel-group {
@@ -84,6 +93,10 @@ h3 {
 				background: darken($secondColor, 10%);
 				margin: -10px -15px;
 				float: right;
+				display: none;
+				@media #{$md} {
+					display: block;
+				}
 				text-align: center;
 				line-height: 74px;
 				font-size: 24px;
