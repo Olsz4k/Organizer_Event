@@ -53,8 +53,9 @@
                             <div class="category-icon"><i class="fa fa-{{ event.category }}" aria-hidden="true"></i></div>
                         </div>
                         <div id="event_{{ event.id }}" ng-class="{in:$first}" class="panel-collapse collapse" role="tabpanel">
-                            <div class="panel-body" ng-bind-html="event.content">
-
+                            <div class="panel-body">
+                                <div ng-bind-html="event.content"></div>
+                                <div class="btn btn-primary add-favourite" ng-click="addFavourite(event.id)"><i class="fa fa-star-o" aria-hidden="true"></i> Ulubione</div>
                             </div>
                         </div>
                     </div>
@@ -81,6 +82,11 @@
                     <span class="badge charity-cat" ng-click="setActiveCategory('charity')">Charytatywne</span>
                     <span class="badge autonomy-cat" ng-click="setActiveCategory('autonomy')">Samorząd</span>
                     <span class="badge entertainment-cat" ng-click="setActiveCategory('entertainment')">Rozrywka</span>
+                </div>
+
+                <h3>Ulubione</h3>
+                <div class="fav text-center">
+                    <div class="btn btn-primary" ng-click="showFavourite()" ><i class="fa fa-star" aria-hidden="true"></i> Pokaż ulubione</div>
                 </div>
 
             </div>

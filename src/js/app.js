@@ -24,7 +24,7 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
         $scope.activeTime = 30; // przedzial czasu w dniach
 
         // Ustawienie kategorii
-        $scope.setActiveCategory = function (newCategory) {
+        $scope.setActiveCategory = function (newCategory, callback ) {
             $(".badge").removeClass('active');
             $(".badge." + newCategory + "-cat").addClass('active');
             $scope.activeCategory = newCategory;
@@ -39,8 +39,9 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
             $scope.sortEvents();
         };
 
+
         // Sortowanie wydarzeń
-        $scope.sortEvents = function () {
+        $scope.sortEvents = function() {
 
             var dateSort = [];
             var catSort = [];
@@ -67,9 +68,56 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
                 }
 
             }
-            $scope.events = catSort;
-        }
 
+            $scope.events = catSort;
+
+            $scope.showStars();
+
+        };
+
+        // FAVOURITES
+        $scope.addFavourite = function(id) {
+
+            if ( localStorage.getItem(id) ) {
+                localStorage.removeItem(id);
+
+            } else {
+                localStorage.setItem(id, "favourite");
+            }
+
+            $scope.showStars();
+
+        };
+
+        $scope.showStars = function(){
+
+            $('.panel').removeClass('favourite');
+
+            var number = result.data.length;
+
+            for (var i = 0; i < number; i++) {
+
+                var event = localStorage.getItem(i.toString());
+
+                if (event === "favourite") {
+
+                    $('#event_'+i).parent().addClass("favourite");
+
+                }
+
+            }
+
+        };
+
+        $('document').ready(function() {
+            $scope.showStars();
+        });
+
+        $scope.showFavourite = function () {
+            $scope.events = result.data;
+            $('.panel').toggle();
+            $('.panel.favourite').toggle();
+        };
     }
 
     function errorCallback(error) {

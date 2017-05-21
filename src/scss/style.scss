@@ -94,6 +94,16 @@ h3 {
 			background: #ECECEC;
 			padding: 30px;
 		}
+		&.favourite {
+			h2:before {
+				font-family: "FontAwesome";
+				content: "\f005 ";
+				margin-right: 8px;
+			}
+			.add-favourite .fa:before {
+				content: "\f005" !important;
+			}
+		}
 	}
 }
 
@@ -179,6 +189,30 @@ h3 {
 	}
 }
 
+.btn-primary {
+	border-radius: 0;
+	border: 0;
+	font-size: 18px;
+	font-family: $headersFont;
+	background: $firstColor;
+	padding: 10px 20px;
+	@include transition(.15s);
+	&:hover, &:focus, &:active {
+		background: darken($firstColor, 10%) !important;
+	}
+	i {
+		margin-right: 10px;
+	}
+}
+
+.add-favourite {
+	margin-top: 10px;
+}
+
+.fav .btn {
+	margin-top: 10px;
+}
+
 .event-form {
 	input, textarea, select {
 		border: 0;
@@ -192,17 +226,22 @@ h3 {
 			border-bottom-color: $firstColor ;
 		}
 	}
-	.btn {
-		border: 0;
-		font-size: 18px;
-		font-family: $headersFont;
-		background: $firstColor;
-		padding: 10px 15px;
-	}
 }
 
 .alert-danger, .alert-succes {
 	border-radius: 0;
+}
+
+.help-block {
+	background: $firstColor;
+	border-left: 8px darken($firstColor, 10%) solid;
+	color: #fff !important;
+	padding: 10px;
+}
+
+.ng-invalid {
+	border-color: #D14840 !important;
+	box-shadow: none !important;
 }
 
 @import "header";
