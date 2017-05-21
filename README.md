@@ -9,7 +9,7 @@ Aby urochomić aplikację lokalnie należy:
 2. Run `npm install`
 3. Run `gulp`
 
-Description
+Opis
 -----------
 Aplikacja ma na celu umożliwić studentom dostęp do wszystkich wydarzeń odbywających się na uczelni.
 Wydarzenia dodawane są na serwer tylko z poziomu administratora. Służy do tego plik form.html
