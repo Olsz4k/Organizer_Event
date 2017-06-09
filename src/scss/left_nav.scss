@@ -1,0 +1,85 @@
+.left-nav {
+  position: fixed;
+  left: 0;
+  width: 100px;
+  height: 100%;
+  background: #2b2b2b;
+  z-index: 500;
+  color: #fff;
+  font-size: 10px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  .logo {
+    height: 100px;
+    width: 100%;
+    background: #1c8d76 50% no-repeat;
+    background-size: 100%;
+    overflow: visible;
+    padding: 25px 20px 20px 20px;
+    border-bottom: 2px solid $secondColor;
+  }
+  .item{
+    padding: 35px 20px 20px 32px;
+    a {
+      color: white;
+    }
+  }
+}
+
+.style-switcher-panel {
+  height: 100%;
+  width: 350px;
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: -350px;
+  background-color: #111;
+  transition: 0.5s;
+  padding: 60px 15px 0 15px;
+
+  h3 {
+    font-size: 25px;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  label {
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 15px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .color-primary {
+    & > input {
+      background: transparent;
+      font-size: 18px;
+      color: #fff;
+      border: 1px solid #fff;
+      height: 50px;
+      padding: 15px 30px;
+    }
+  }
+
+  .colorpicker-element {
+    position: relative;
+
+    .colorpicker {
+      top: auto !important;
+    }
+  }
+}

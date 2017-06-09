@@ -1,4 +1,4 @@
-var app = angular.module('app', ["ngSanitize"]);
+var app = angular.module('app', ["ngSanitize", "angular-click-outside"]);
 
 app.controller('dateCtrl', function ($scope, $interval) {
 
@@ -119,6 +119,19 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
             $('.panel.favourite').toggle();
         };
     }
+
+    //Open panel search
+    $scope.openNav = function openNav() {
+        document.getElementById('search').style.left='200px';
+        document.getElementById('panel').style.left='0px';
+    };
+
+    //Close panel search
+    $scope.closeNav = function closeNav() {
+        document.getElementById('search').style.left='0px';
+        document.getElementById('input-search').value='';
+        document.getElementById('panel').style.left='-216px';
+    };
 
     function errorCallback(error) {
         console.log("Nie udalo sie pobrac pliku JSON!");
