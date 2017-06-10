@@ -63,6 +63,7 @@ h3 {
 	.panel {
 		border: none;
 		border-radius: 0;
+		z-index: 1;
 		.panel-heading {
 			border-radius: 0;
 			background: $secondColor;
@@ -285,15 +286,12 @@ h3 {
 	left: -216px;
 	position: fixed;
 	transition: 0.6s;
-	margin-top: 30px;
+	margin-top: -55px;
 	padding: 10px;
-	@media (max-width: 1600px){
-		 display: none;
+	z-index: 3;
+	@media (max-width: 1010px){
+		display: none;
 	}
-	//@media (min-width: 900px){
-	//	top: 270px;
-	//}
-
 }
 
 
