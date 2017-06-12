@@ -1,4 +1,4 @@
-var app = angular.module('app', ["ngSanitize", "angular-click-outside"]);
+var app = angular.module('app', ["ngSanitize", "angular-click-outside", 'firebase']);
 
 app.controller('dateCtrl', function ($scope, $interval) {
 
@@ -11,10 +11,9 @@ app.controller('dateCtrl', function ($scope, $interval) {
 
 });
 
-app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
+app.controller('selectionCtrl', ['$scope', '$http', '$firebase', function ($scope, $http) {
 
     $http.get('./events.json').then(successCallback, errorCallback);
-
 
     function successCallback(result) {
 
@@ -24,7 +23,7 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
         $scope.activeTime = 30; // przedzial czasu w dniach
 
         // Ustawienie kategorii
-        $scope.setActiveCategory = function (newCategory, callback ) {
+        $scope.setActiveCategory = function (newCategory, callback) {
             $(".badge").removeClass('active');
             $(".badge." + newCategory + "-cat").addClass('active');
             $scope.activeCategory = newCategory;
@@ -41,7 +40,7 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
 
 
         // Sortowanie wydarzeń
-        $scope.sortEvents = function() {
+        $scope.sortEvents = function () {
 
             var dateSort = [];
             var catSort = [];
@@ -76,9 +75,9 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
         };
 
         // FAVOURITES
-        $scope.addFavourite = function(id) {
+        $scope.addFavourite = function (id) {
 
-            if ( localStorage.getItem(id) ) {
+            if (localStorage.getItem(id)) {
                 localStorage.removeItem(id);
 
             } else {
@@ -89,7 +88,7 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
 
         };
 
-        $scope.showStars = function(){
+        $scope.showStars = function () {
 
             $('.panel').removeClass('favourite');
 
@@ -101,7 +100,7 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
 
                 if (event === "favourite") {
 
-                    $('#event_'+i).parent().addClass("favourite");
+                    $('#event_' + i).parent().addClass("favourite");
 
                 }
 
@@ -109,7 +108,7 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
 
         };
 
-        $('document').ready(function() {
+        $('document').ready(function () {
             $scope.showStars();
         });
 
@@ -122,15 +121,15 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
 
     //Open panel search
     $scope.openNav = function openNav() {
-        document.getElementById('search').style.left='200px';
-        document.getElementById('panel').style.left='0px';
+        document.getElementById('search').style.left = '200px';
+        document.getElementById('panel').style.left = '0px';
     };
 
     //Close panel search
     $scope.closeNav = function closeNav() {
-        document.getElementById('search').style.left='0px';
-        document.getElementById('input-search').value='';
-        document.getElementById('panel').style.left='-216px';
+        document.getElementById('search').style.left = '0px';
+        document.getElementById('input-search').value = '';
+        document.getElementById('panel').style.left = '-216px';
     };
 
     function errorCallback(error) {
@@ -139,14 +138,27 @@ app.controller('selectionCtrl', ['$scope', '$http', function ($scope, $http) {
 
 }]);
 
-app.controller('validateCtrl', function ($scope) {
+app.controller('validateCtrl', function ($scope, $firebase) {
     $scope.minDatetimeLocal = new Date();
-    console.log($scope.minDatetimeLocal);
-
+    var databaseRef = new Firebase("https://organizer-event.firebaseio.com");
+    $scope.events = $firebase(databaseRef).$asArray();
 
     $scope.submitForm = function (isValid) {
         if (isValid) {
+            //decode date to JSON format
+            var dateJSON = (new Date($scope.dataWydarzenia)).toJSON();
+
+            $scope.events.$add({
+                id: $scope.events.length + 1,
+                name: $scope.nameEvent,
+                content: $scope.contentEvent,
+                category: $scope.category,
+                date: dateJSON
+            });
+
+
             alert("Gratulacje, wydarzenie zostało poprawnie dodane");
+
         }
 
         else {

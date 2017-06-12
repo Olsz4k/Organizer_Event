@@ -9,6 +9,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.4/angular-sanitize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/clickoutside.directive.js"></script>
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+
 
     <link href="./favicon.ico" rel="Shortcut icon">
 </head>
@@ -52,7 +59,7 @@
                            class="help-block">Wprowadzona nazwa jest niepoprawna</p>
                     </div>
 
-                    <input title="date" type="datetime-local" name="date" class="form-control"
+                    <input title="date" type="datetime-local" name="dataWydarzenia" class="form-control" ng-model="dataWydarzenia"
                            placeholder="yyyy-MM-ddTHH:mm" min="{{ minDatetimeLocal | date : 'yyyy-MM-ddTHH:mm' }}"
                            required/>
 
@@ -64,7 +71,7 @@
                     </div>
 
 
-                    <select title="Kategoria" name="category" class="form-control" required>
+                    <select title="Kategoria" name="category" ng-model="category" class="form-control" required>
                         <option value="it">IT</option>
                         <option value="economy">Ekonomia</option>
                         <option value="sport">Sport</option>
@@ -80,6 +87,19 @@
         </div>
     </div>
 </main>
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCv4NQt8WCRRqPbHQyFN31poUfGv8SbWP0",
+        authDomain: "organizer-event.firebaseapp.com",
+        databaseURL: "https://organizer-event.firebaseio.com",
+        projectId: "organizer-event",
+        storageBucket: "organizer-event.appspot.com",
+        messagingSenderId: "966519008319"
+    };
+    firebase.initializeApp(config);
+</script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="js/app.js"></script>
