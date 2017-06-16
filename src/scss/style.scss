@@ -167,6 +167,14 @@ h3 {
 		content: "\f004";
 	}
 
+	.add-form {
+		background-color: #e6b800;
+		border-color: darken(#e6b800, 10%);
+		text-align: center;
+		border-right: 80px solid darken(#e6b800, 10%);
+		border-left: 80px solid darken(#e6b800, 10%);
+	}
+
 	.charity-cat {
 		background: $charity-color;
 		border-color: darken($charity-color, 10%);
@@ -219,9 +227,56 @@ h3 {
 	}
 }
 
-.add-favourite {
-	margin-top: 10px;
+.btn-warning {
+	background-color: #e6b800;
+	border-radius: 0;
+	border: 0;
+	font-size: 18px;
+	font-family: $headersFont;
+	padding: 10px 20px;
+	@include transition(.15s);
+	i {
+		margin-right: 10px;
+	}
 }
+
+.add-favourite {
+	margin-top: 30px;
+}
+
+.famous {
+	margin-top: 30px;
+	float: right;
+	margin-right: 2px;
+	padding: 9px 13px;
+	@media (max-width: 800px) {
+		margin-top: -46px;
+		margin-right: 150px;
+	}
+
+
+	.fa-plus {
+		margin-right: 2px;
+		margin-left: 2px;
+	}
+	.btn-primary{
+	}
+}
+.panel-famous {
+	margin-top: 30px;
+	float: right;
+	background-color: darken($firstColor, 10%);
+	padding: 9px 40px;
+	font-family: "BebasNeue";
+	font-size: 18px;
+	color: #ffffff;
+	@media (max-width: 800px){
+		color: #8F44AD;
+	margin-top: 31px;
+	margin-right: -25px;
+}
+}
+
 
 .fav .btn {
 	margin-top: 10px;

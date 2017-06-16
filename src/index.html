@@ -48,13 +48,12 @@
 
 <main ng-controller="selectionCtrl">
     <!--Panel search-->
-    <div id="panel" class="well"  click-outside="closeNav()">
+    <div id="panel" class="well" click-outside="closeNav()">
         <input id="input-search" class="search" type="search" placeholder="Szukaj wydarzenia">
         <div id="search" class="item-search" ng-click="openNav()">
             <i class="fa fa-search fa-2x" aria-hidden="true"></i>
         </div>
     </div>
-
     <!--End panel search-->
     <div class="container">
         <div class="row">
@@ -64,31 +63,25 @@
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
                     <div class="panel panel-default">
-                        <div class="panel-heading it-cat" role="tab" id="headingOne">
+                        <div class="panel-heading add-form" role="tab" id="headingOne">
                             <h2 class="panel-title">
                                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
                                    aria-expanded="true" aria-controls="collapseOne">
-                                    wydarzenie 1
+                                    Dodaj nowe wydarzenie
                                 </a>
                             </h2>
-                            <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i>
-                                <h3>16.05.2017</h3></div>
-                            <div class="hour"><i class="fa fa-clock-o" aria-hidden="true"></i>
-                                <h3>18:30</h3></div>
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel">
                             <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
-                                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
-                                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-                                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                <div>Witaj użytkowniku :) <br><br>
+                                Jeśli znalazłeś wydarzenie, które nie znajduje się w naszej bazie, a chciałbyś aby pozostali studenci
+                                dowiedzieli się o tym, to jak najszybciej kliknij w poniższy przycisk, który przekieruje Cię na
+                                stronę formularza. Każde nasze wydarzenie przechodzi przez autoryzacje, dlatego potrzebujemy 1 dzień, zanim się znajdzie na naszej stronie.
+                                </div>
+                                <a href="http://localhost:3000/form.html"><button class="btn btn-warning add-favourite">Dodaj wydarzenie</button></a>
                             </div>
                         </div>
                     </div>
-
                     <div ng-repeat="event in events | orderBy : '-date' " class="panel panel-default">
 
                         <div class="panel-heading {{ event.category }}-cat" role="tab" id="event_h_{{ event.id }}">
@@ -113,11 +106,16 @@
                                 <div class="btn btn-primary add-favourite" ng-click="addFavourite(event.id)"><i
                                         class="fa fa-star-o" aria-hidden="true"></i> Ulubione
                                 </div>
+                                <div class="panel-famous">
+                                    Wezmą udział: {{ event.interested }}
+                                </div>
+                                <div class="btn btn-primary famous" ng-click="addInterested(event.id)">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
             </div>
@@ -168,18 +166,6 @@
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-<script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyCv4NQt8WCRRqPbHQyFN31poUfGv8SbWP0",
-        authDomain: "organizer-event.firebaseapp.com",
-        databaseURL: "https://organizer-event.firebaseio.com",
-        projectId: "organizer-event",
-        storageBucket: "organizer-event.appspot.com",
-        messagingSenderId: "966519008319"
-    };
-    firebase.initializeApp(config);
-</script>
 <script src="js/app.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/firebase.js"></script>

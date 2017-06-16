@@ -11,13 +11,33 @@ app.controller('dateCtrl', function ($scope, $interval) {
 
 });
 
-app.controller('selectionCtrl', ['$scope', '$http', '$firebase', function ($scope, $http) {
+app.controller('selectionCtrl', ['$scope', '$http', '$firebase', function ($scope, $http, $firebase) {
 
-    $http.get('./events.json').then(successCallback, errorCallback);
+    // connect do Firebase database
+    var databaseRef = new Firebase("https://organizer-event.firebaseio.com/");
 
-    function successCallback(result) {
 
-        $scope.events = result.data;
+    databaseRef.on('value', function (snap) {
+        // get all event from Firebase
+        // $scope.events = $firebase(databaseRef).$asArray();
+
+        var dateSort = [];
+        snap.forEach(function (data) {
+            var tmp = data.val();
+            var thisDate = new Date(tmp.date); // data wydarzenia
+            var today = new Date(); // dzisiejsza data
+
+            // Check and push future event
+            if (thisDate > today) {
+
+                dateSort.push(tmp);
+            }
+            $scope.events = dateSort;
+        });
+
+
+        //get number of object in Firebase
+        // console.log(snap.numChildren());
 
         $scope.activeCategory = "all";
         $scope.activeTime = 30; // przedzial czasu w dniach
@@ -38,36 +58,39 @@ app.controller('selectionCtrl', ['$scope', '$http', '$firebase', function ($scop
             $scope.sortEvents();
         };
 
-
         // Sortowanie wydarzeń
         $scope.sortEvents = function () {
 
             var dateSort = [];
             var catSort = [];
 
-            // Sortowanie po dacie
-            for (var i = 0; i < result.data.length; i++) {
+            databaseRef.orderByChild("date").once("value", function (snap) {
+                snap.forEach(function (data) {
+                    var tmp = data.val();
+                    var thisDate = new Date(tmp.date); // data wydarzenia
+                    var today = new Date(); // dzisiejsza data
+                    var time = thisDate - today; // różnica czasu w milisekundach
 
-                var thisDate = new Date(result.data[i].date); // data wydarzenia
-                var today = new Date(); // dzisiejsza data
-                var time = thisDate - today; // różnica czasu w milisekundach
+                    // 1000*60*60*24ms = 1 dzien
+                    // Sprawdzenie daty w odpowiednim zakresie oraz czy data nie jest z przeszłości
+                    if ((time < 1000 * 60 * 60 * 24 * $scope.activeTime) && (thisDate > today)) {
+                        dateSort.push(tmp);
+                    }
+                });
 
-                // 1000*60*60*24ms = 1 dzien
-                if (time < 1000 * 60 * 60 * 24 * $scope.activeTime) {
-                    dateSort.push(result.data[i]);
+                // Sortowanie po kategorii
+                for (var j = 0; j < dateSort.length; j++) {
+
+                    if (dateSort[j].category === $scope.activeCategory || $scope.activeCategory === "all") {
+                        catSort.push(dateSort[j]);
+                    }
+
                 }
 
-            }
+                $scope.events = catSort;
+                // $scope.showStars();
 
-            // Sortowanie po kategorii
-            for (var j = 0; j < dateSort.length; j++) {
-
-                if (dateSort[j].category === $scope.activeCategory || $scope.activeCategory === "all") {
-                    catSort.push(dateSort[j]);
-                }
-
-            }
-
+            });
             $scope.events = catSort;
 
             $scope.showStars();
@@ -92,9 +115,9 @@ app.controller('selectionCtrl', ['$scope', '$http', '$firebase', function ($scop
 
             $('.panel').removeClass('favourite');
 
-            var number = result.data.length;
+            var number = dateSort.length;
 
-            for (var i = 0; i < number; i++) {
+            for (var i = 0; i < number + 1 ; i++) {
 
                 var event = localStorage.getItem(i.toString());
 
@@ -113,12 +136,23 @@ app.controller('selectionCtrl', ['$scope', '$http', '$firebase', function ($scop
         });
 
         $scope.showFavourite = function () {
-            $scope.events = result.data;
+            $scope.events = dateSort;
             $('.panel').toggle();
             $('.panel.favourite').toggle();
         };
-    }
 
+        $scope.addInterested = function (id) {
+            for (var j = 0; j < dateSort.length; j++) {
+
+                if (dateSort[j].id === id) {
+                    dateSort[j].interested++;
+                }
+
+            }
+
+        }
+
+    });
     //Open panel search
     $scope.openNav = function openNav() {
         document.getElementById('search').style.left = '200px';
@@ -132,14 +166,11 @@ app.controller('selectionCtrl', ['$scope', '$http', '$firebase', function ($scop
         document.getElementById('panel').style.left = '-216px';
     };
 
-    function errorCallback(error) {
-        console.log("Nie udalo sie pobrac pliku JSON!");
-    }
-
 }]);
 
 app.controller('validateCtrl', function ($scope, $firebase) {
     $scope.minDatetimeLocal = new Date();
+    //connect to Firebase database
     var databaseRef = new Firebase("https://organizer-event.firebaseio.com");
     $scope.events = $firebase(databaseRef).$asArray();
 
@@ -148,17 +179,20 @@ app.controller('validateCtrl', function ($scope, $firebase) {
             //decode date to JSON format
             var dateJSON = (new Date($scope.dataWydarzenia)).toJSON();
 
+            // Save data in Firebase Database
             $scope.events.$add({
                 id: $scope.events.length + 1,
                 name: $scope.nameEvent,
                 content: $scope.contentEvent,
                 category: $scope.category,
-                date: dateJSON
+                date: dateJSON,
+                interested: 0
             });
 
 
             alert("Gratulacje, wydarzenie zostało poprawnie dodane");
-
+            // location.href = "http://localhost:3000/"
+        //
         }
 
         else {
